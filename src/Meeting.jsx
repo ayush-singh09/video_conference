@@ -3,6 +3,21 @@ import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { useParams } from "react-router-dom";
 
 export default function Meeting() {
+
+  function randomID(len) {
+    let result = "";
+    if (result) return result;
+    var chars =
+        "12345qwertyuiopasdfgh67890jklmnbvcxzMNBVCZXASDQWERTYHGFUIOLKJP",
+      maxPos = chars.length,
+      i;
+    len = len || 5;
+    for (i = 0; i < len; i++) {
+      result += chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return result;
+  }
+
   const { room } = useParams();
   const roomID = room;
   let myMeeting = async (element) => {
@@ -13,7 +28,7 @@ export default function Meeting() {
       appID,
       serverSecret,
       roomID,
-      "Ayush",
+      randomID(5),
       "Ayush"
     );
 
